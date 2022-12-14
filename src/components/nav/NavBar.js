@@ -1,69 +1,71 @@
 import { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
+import { Navbar, Button } from "flowbite-react"
 
 export const NavBar = ({ token, setToken }) => {
-  const navigate = useNavigate()
-  const navbar = useRef()
-  const hamburger = useRef()
+    const navigate = useNavigate()
+    const navbar = useRef()
+    const logout = () => {
+        setToken(null)
+        localStorage.removeItem('auth_token')
+    }
 
-  const showMobileNavbar = () => {
-    hamburger.current.classList.toggle('is-active')
-    navbar.current.classList.toggle('is-active')
-  }
 
-  return (
-    <nav className="navbar is-success mb-3" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <a className="navbar-item" href="/">
-          {/* <img src={Logo} height="3rem" alt="Rare Logo" /> <h1 className="title is-4">Rare Publishing</h1> */}
-        </a>
 
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onClick={showMobileNavbar} ref={hamburger}>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div className="navbar-menu" ref={navbar}>
-        <div className="navbar-start">
-          {
-            token
-              ? <>
-                <Link to="/posts" className="navbar-item">Start Round</Link>
-                <Link to="/newPosts" className="navbar-item">My Stats</Link>
-                <Link to="/myPosts" className="navbar-item">My Bag</Link>
-                <Link to="/tags" className="navbar-item">Note</Link>
-                <Link to="/users" className="navbar-item">Profile</Link>
-
-              </>
-              :
-              ""
-          }
-        </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              {
-                token
-                  ?
-                  <button className="button is-outlined" onClick={() => {
-                    setToken('')
-                    navigate('/login')
-                  }}>Logout</button>
-                  :
-                  <>
-                    <Link to="/register" className="button is-link">Register</Link>
-                    <Link to="/login" className="button is-outlined">Login</Link>
-                  </>
-              }
+    return (
+        <Navbar
+            fluid={true}
+            rounded={true}
+        >
+            <Navbar.Brand href="/home">
+                <img
+                    src="image2vector (1).svg "
+                    className="mr-3 h-12 sm:h-12"
+                    alt="Teebag Logo"
+                />
+                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+                    
+                </span>
+         
+            </Navbar.Brand>
+            <div className="flex md:order-2">
+                <Button href="/startRound">
+                    Start Round
+                </Button>
+            <Navbar.Toggle />
             </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  )
+            <Navbar.Collapse>      
+                 {
+        token
+            ? <>
+                <Navbar.Link
+                    href="/navbars"
+                    active={true}
+                >
+                    Home
+                </Navbar.Link>
+                <Navbar.Link href="/MyBag">
+                My Bag
+                </Navbar.Link>
+                <Navbar.Link href="/navbars">
+                Stats Dashboard
+                </Navbar.Link>
+                <Navbar.Link href="/profile">
+                Profile
+                </Navbar.Link>
+                <Navbar.Link onClick={logout} href="/login">
+                Sign out
+                </Navbar.Link>
+                </>
+                :
+                ""
+                }
+            </Navbar.Collapse>
+        </Navbar>
+          
+   
+
+    )
+
 }
