@@ -1,5 +1,5 @@
 export const createMyClub = (myClub) => {
-    return fetch("http://localhost:8088/myclubs", {
+    return fetch("http://localhost:8000/myclubs", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -11,7 +11,7 @@ export const createMyClub = (myClub) => {
 }
 
 export const getAllMyClubs = () => {
-    return fetch("http://localhost:8088/myclubs", {
+    return fetch("http://localhost:8000/myclubs", {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -20,7 +20,7 @@ export const getAllMyClubs = () => {
         .then(res => res.json())
 }
 export const getMyClubById = (myClub) => {
-    return fetch(`http://localhost:8088/myclubs/${myClub.id}`, {
+    return fetch(`http://localhost:8000/myclubs/${myClub.id}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -30,7 +30,7 @@ export const getMyClubById = (myClub) => {
 }
 
 export const deleteMyClub = (myClubId) => {
-    return fetch(`http://localhost:8088/myclubs/${myClubId}`, {
+    return fetch(`http://localhost:8000/myclubs/${myClubId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const deleteMyClub = (myClubId) => {
         .then(res => res.json())
 }
 export const updateMyClub = (myClub) => {
-    return fetch(`http://localhost:8088/myclubs/${myClub.id}`, {
+    return fetch(`http://localhost:8000/myclubs/${myClub.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -49,8 +49,8 @@ export const updateMyClub = (myClub) => {
         body: JSON.stringify(myClub)
     })
 }
-export const getAllClubs = (userId) => {
-    return fetch("http://localhost:8088/clubs", {
+export const getAllClubs = () => {
+    return fetch("http://localhost:8000/clubs", {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -59,7 +59,7 @@ export const getAllClubs = (userId) => {
         .then(res => res.json())
 }
 export const getClubById = (clubId) => {
-    return fetch(`http://localhost:8088/clubs/${clubId}`, {
+    return fetch(`http://localhost:8000/clubs/${clubId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`

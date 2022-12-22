@@ -1,5 +1,5 @@
-export const getRoundById = (roundId) => {
-    return fetch(`http://localhost:8000/rounds/${roundId}`, {
+export const getAllHoles = () => {
+    return fetch(`http://localhost:8000/holes`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -8,28 +8,8 @@ export const getRoundById = (roundId) => {
         .then(res => res.json())
 }
 
-export const deleteRound = (roundId) => {
-    return fetch(`http://localhost:8000/rounds/${roundId}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        }
-    })
-        .then(res => res.json())
-}
-export const updateRound = (round) => {
-    return fetch(`http://localhost:8000/rounds/${round.id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        },
-        body: JSON.stringify(round)
-    })
-}
-export const getAllRounds = () => {
-    return fetch("http://localhost:8000/rounds", {
+export const getHoleById = (holeId) => {
+    return fetch(`http://localhost:8000/holes/${holeId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -37,14 +17,37 @@ export const getAllRounds = () => {
     })
         .then(res => res.json())
 }
-export const createRound = (round) => {
-    return fetch("http://localhost:8000/rounds", {
+
+export const updateHole = (hole) => {
+    return fetch(`http://localhost:8000/holes/${hole.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        },
+        body: JSON.stringify(hole)
+    })
+        .then(res => res.json())
+}
+
+export const createHole = (hole) => {
+    return fetch("http://localhost:8000/holes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         },
-        body: JSON.stringify(round)
+        body: JSON.stringify(hole)
+    })
+        .then(res => res.json())
+}
+
+export const getHoleByRound = (roundId) => {
+    return fetch(`http://localhost:8000/holes?round=${roundId}`, {
+        headers: {
+            "Accept": "application/json",
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
     })
         .then(res => res.json())
 }

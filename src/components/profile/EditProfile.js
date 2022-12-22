@@ -4,7 +4,7 @@ import { getCurrentUser, updateUser } from "../../managers/UserManager";
 
 
 
-export const UpdateProfile = ({ loggedInUser }) => {
+export const UpdateProfile = () => {
 
     const [currentUser, setCurrentUser] = useState({});
     const [currentProfile, updateCurrentProfile] = useState({
@@ -41,14 +41,14 @@ export const UpdateProfile = ({ loggedInUser }) => {
     const handleUpdateButton = (evt) => {
 
         evt.preventDefault();
-        const player = {
+        const golfer = {
             id: currentUser.id,
             username: currentProfile.username,
             profileImageUrl: currentProfile.profileImageUrl,
             email: currentProfile.email,
             bio: currentProfile.bio
         };
-        updateUser(player).then(() => navigate("/profile"));
+        updateUser(golfer).then(() => navigate("/profile"));
 
     }
 

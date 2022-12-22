@@ -6,8 +6,11 @@ import { Home } from "../components/home/home"
 import { AddMyClub } from "../components/mybag/AddMyClub"
 import { MyClubsList } from "../components/mybag/MyClubList"
 import { AddNote } from "../components/notes/AddNote"
+import { AllNotes } from "../components/notes/AllNotes"
 import { UpdateProfile } from "../components/profile/EditProfile"
 import { Profile } from "../components/profile/Profile"
+import { Hole } from "../components/round/Hole"
+import { MyRounds } from "../components/round/MyRounds"
 import { Round } from "../components/round/Round"
 
 import { Authorized } from "./Authorized"
@@ -28,6 +31,7 @@ import { Authorized } from "./Authorized"
 export const ApplicationViews = ({ token, setToken }) => {
     const [holes, setHoles] = useState(0)
     const [currentHole, setCurrentHole] = useState(1)
+    const [currentRound, setCurrentRound] = useState(0)
 
     return <>
         <Routes>
@@ -35,9 +39,12 @@ export const ApplicationViews = ({ token, setToken }) => {
             <Route path="/register" element={<Register setToken={setToken} />} />
             <Route path="/" element={<Authorized token={token} />}>
                 <Route path="/home" element={<Home />} />
-                <Route path="/startRound" element={<Round setHoles={setHoles} setCurrentHole={setCurrentHole} />} />
-                <Route path="/holes/create" element={<Round setHoles={setHoles} setCurrentHole={setCurrentHole} />} />
+                <Route path="/rounds" element={<MyRounds/>} />
+                <Route path="/startRound" element={<Round setHoles={setHoles} setCurrentHole={setCurrentHole} setCurrentRound={setCurrentRound}/>} />
+                <Route path="/holes/create" element={<Hole setHoles={setHoles} setCurrentHole={setCurrentHole} currentHole={currentHole} setCurrentRound={setCurrentRound} holes={holes} currentRound={currentRound} />} />
+                <Route path="/notes" element={<AllNotes />} />
                 <Route path="/addNote" element={<AddNote />} />
+                <Route path="/editNote/:noteId(\d+)" element={<AddNote />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/editProfile" element={<UpdateProfile />} />
                 <Route path="/addClub" element={<AddMyClub />} />

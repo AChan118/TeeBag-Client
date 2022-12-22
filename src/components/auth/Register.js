@@ -32,7 +32,7 @@ export const Register = ({ setToken }) => {
           if ("token" in res && res.token) {
             setToken(res.token)
             //  saved in local storage as auth_token
-            navigate("/")
+            navigate("/home")
           }
         })
     } else {

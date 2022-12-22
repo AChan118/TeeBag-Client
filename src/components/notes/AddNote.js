@@ -1,28 +1,49 @@
-//Form for logged in user to add a new note to their list of notes
-import React, { useRef } from "react"
+//Form for logged in user to add a new note to their list of notes using state
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "flowbite-react"
 // import { addNote } from "../../managers/NoteManager"
 import { Label, TextInput, Card } from "flowbite-react"
+import { getCurrentUser } from '../../managers/UserManager';
+import { createNote } from "../../managers/NoteManager";
 
 
 export const AddNote = () => {
     const navigate = useNavigate()
-    const title = useRef()
-    const content = useRef()
-    const addNote = () => {
-        const note = {
-            title: title.current.value,
-            content: content.current.value,
-            date: Date.now(),
-            userId: parseInt(sessionStorage.getItem("teebag_user"))
+    const [note, setNote] = useState({
+        title: "",
+        content: "",
+        date: ""
+    })
+    const [currentUser, setCurrentUser] = useState({id: 0})
+    
+    useEffect(() => {
+        getCurrentUser().then((data) => {
+            setCurrentUser(data.id)
+        })
+    }, [])
 
-        }
-        addNote(note).then(() => {
-            navigate("/notes")
-        }
-        )
+    
+
+    const handleControlledInputChange = (event) => {
+        const newNote = { ...note }
+        let selectedVal = event.target.value
+        newNote[event.target.id] = selectedVal
+        setNote(newNote)
     }
+
+    const handleClickSaveNote = (event) => {
+        event.preventDefault()
+        const newNote = {
+            title: note.title,
+            content: note.content,
+            golfer: currentUser.id
+        }
+        createNote(newNote)
+            .then(() => navigate("/notes"))
+    }
+
+   
     return (
         <>
             <div className="flex flex-col items-center justify-center h-screen">
@@ -44,7 +65,8 @@ export const AddNote = () => {
                                     type="text"
                                     placeholder="Title"
                                     required={true}
-                                    ref={title}
+                                    onChange={handleControlledInputChange}
+                                    value={note.title}
                                 />
                             </div>
                             <div>
@@ -59,14 +81,18 @@ export const AddNote = () => {
                                     type="text"
                                     placeholder="Content"
                                     required={true}
-                                    ref={content}
+                                    onChange={handleControlledInputChange}
+                                    value={note.content}
                                 />
                             </div>
                             <div>
                                 <Button
-                                    onClick={addNote}
-                                    value="Add Note"
-                                />
+                                    onClick={handleClickSaveNote}
+                                    value="addNote"
+                                >
+                                    Submit Note
+                                </Button>
+                                
                             </div>
                         </form>
                     </Card>

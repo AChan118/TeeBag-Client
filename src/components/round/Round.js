@@ -10,7 +10,7 @@ import { createRound } from '../../managers/RoundManager';
 
 
 
-export const Round = ({setHoles, setCurrentHole}) => {
+export const Round = ({setHoles, setCurrentHole, setCurrentRound}) => {
     const [round, setRound] = useState({
         golfer: "",
         date: "",
@@ -20,17 +20,22 @@ export const Round = ({setHoles, setCurrentHole}) => {
     
     const navigate = useNavigate()
 
-    const [currentGolfer, setCurrentGolfer] = useState({})
+    
     const [isChecked, setIsChecked] = useState(false)
     const [courses, setCourses] = useState([])
+    const [currentUser, setCurrentUser] = useState({id: 0})
+    
+    useEffect(() => {
+        getCurrentUser().then((data) => {
+            setCurrentUser(data.id)
+        })
+    }, [])
     
 
     useEffect(() => {
         getAllCourses().then(setCourses)
     }, [])
-    useEffect(() => {
-        getCurrentUser().then(setCurrentGolfer)
-    }, [])
+    
     
 
     const changeRoundState = (domEvent) => {
@@ -43,24 +48,26 @@ export const Round = ({setHoles, setCurrentHole}) => {
     const handleRound = (e) => {
         e.preventDefault()
 
-        const round = {
-            golfer: currentGolfer.id,
+        const newRound = {
+            golfer: currentUser.id,
             date: round.date,
             course: round.course,
             isFullRound: isChecked
         }
         // In Round component, when Begin Round is clicked, set total state variable to 9 or 18 and also set current hole to 1
 
-        createRound(round).then(res => {
+        createRound(newRound).then(res => {
             
-            if ("isFullRound" in res && res.isFullRound === true) {
+            if (isChecked) {
                 setHoles(18)
                 setCurrentHole(1)
+                setCurrentRound(res.id)
                 navigate("/holes/create")
             }
             else {
                 setHoles(9)
                 setCurrentHole(1)
+                setCurrentRound(res.id)
                 navigate("/holes/create")
 
             }
