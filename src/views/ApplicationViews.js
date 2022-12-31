@@ -4,6 +4,7 @@ import { Login } from "../components/auth/Login"
 import { Register } from "../components/auth/Register"
 import { Home } from "../components/home/home"
 import { AddMyClub } from "../components/mybag/AddMyClub"
+import { MyClubs } from "../components/mybag/MyBag"
 import { MyClubsList } from "../components/mybag/MyClubList"
 import { AddNote } from "../components/notes/AddNote"
 import { AllNotes } from "../components/notes/AllNotes"
@@ -49,7 +50,8 @@ export const ApplicationViews = ({ token, setToken }) => {
                 <Route path="/editProfile" element={<UpdateProfile />} />
                 <Route path="/addClub" element={<AddMyClub />} />
                 <Route path="/editClub/:clubId(\d+)" element={<AddMyClub />} />
-                <Route path="/myClubList" element={<MyClubsList />} />
+                <Route path="/MyClubs" element={<MyClubs />} />
+                <Route path="/MyBag" element={<MyClubsList />} />
 
             </Route>
         </Routes>

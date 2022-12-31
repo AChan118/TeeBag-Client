@@ -81,8 +81,8 @@ export const Round = ({setHoles, setCurrentHole, setCurrentRound}) => {
 
 
     return <>
-        <div className="flex flex-col items-center justify-center h-screen">
-            <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800">
+            <div className="flex flex-col items-center justify-center md:scale-125">
                 <h1 className="text-6xl font-bold">Start Round</h1>
                 <form className="flex flex-col gap-4">
                     <div>

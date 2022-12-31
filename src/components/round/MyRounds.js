@@ -26,19 +26,19 @@ export const MyRounds = () => {
 
     return (
         <>
-            <section className="section-content min-h-screen">
+            <section className="section-content min-h-screen bg-cover bg-center relative w-full bg-gradient-to-tl from-green-800 to-blue-800">
 
 
                 <div className="h-full sm:h-55  " >
 
-                    <Carousel className="absolute inset-x-0 bottom-0">
+                    <Carousel className="absolute inset-x-0 bottom-0 mb-3">
 
                         {rounds.map(round => <RoundCarousel key={round.id} round={round} />)}
                     </Carousel>
                 </div>
                 <div className="rounds">
                     <div className="max-w-sm">
-                        <Card>
+                        <Card className="m-3">
                             <h5 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 Stats and Analysis
                             </h5>
@@ -50,8 +50,8 @@ export const MyRounds = () => {
                         </Card>
                     </div>
 
-                    <div className="flex justify-end ">
-                        <Card>
+                    <div className="flex justify-center m-3">
+                        <Card className=" bg-gray-400 bg-opacity-10 border-none">
 
                             <Tooltip content="Open all rounds">
                                 <Button className="text-6xl font-bold text-center ">
@@ -59,7 +59,7 @@ export const MyRounds = () => {
                                 </Button>
                             </Tooltip>
 
-                            <div className="" >
+                            <div className="hidden" >
                                 {rounds.map(round => <RoundCard key={round.id} round={round} />)}
                             </div>
 

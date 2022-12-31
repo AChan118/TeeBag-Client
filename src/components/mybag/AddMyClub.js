@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "flowbite-react"
 import { createMyClub, getAllClubs } from "../../managers/ClubManager"
-import { getCourseById } from "../../managers/CourseManager"
 import { getCurrentUser } from "../../managers/UserManager"
 
 export const AddMyClub = () => {
@@ -39,9 +38,9 @@ export const AddMyClub = () => {
     const handleClickSaveMyClub = (event) => {
         event.preventDefault()
         const newMyClub = {
-            club: myClub.clubId,
+            club: myClub.club,
             my_bag: currentUser.id,
-            yardage: myClub.yardage,
+            yardage: parseInt(myClub.yardage) ,
             brand: myClub.brand,
             loft: myClub.loft,
             club_note: myClub.club_note

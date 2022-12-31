@@ -50,7 +50,7 @@ export const RoundCarousel = ({ round }) => {
     //{
 
     return (
-        <div className="flex flex-col h-full items-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+        <div className="flex flex-col h-full bg-gray-400 dark:bg-gray-700 dark:text-white items-center justify-center bg-opacity-20">
                    <h2 className="text-slate">Recent round: {round.date}</h2>
                    <div className="mb-10">
                         <h1 className="text-6xl">|{round.course.name}</h1>
