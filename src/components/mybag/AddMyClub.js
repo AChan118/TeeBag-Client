@@ -1,7 +1,7 @@
 //from a card style form select a club from a list of clubs and have a text imput for yards and notes
 import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { Button } from "flowbite-react"
+import { useNavigate, useParams } from "react-router-dom"
+import { Button, Card } from "flowbite-react"
 import { createMyClub, getAllClubs } from "../../managers/ClubManager"
 import { getCurrentUser } from "../../managers/UserManager"
 
@@ -17,7 +17,7 @@ export const AddMyClub = () => {
     })
     const [clubs, setClubs] = useState([])
     const [currentUser, setCurrentUser] = useState({})
-
+    const {bagId} = useParams()
 
     useEffect(() => {
         getCurrentUser().then((data) => {
@@ -39,25 +39,27 @@ export const AddMyClub = () => {
         event.preventDefault()
         const newMyClub = {
             club: myClub.club,
-            my_bag: currentUser.id,
+            my_bag: parseInt(bagId),
             yardage: parseInt(myClub.yardage) ,
             brand: myClub.brand,
             loft: myClub.loft,
             club_note: myClub.club_note
         }
         createMyClub(newMyClub)
-            .then(() => navigate("/mybag"))
+            .then(() => navigate("/MyBag"))
     }
 
     return (
         <>
             {/* form to add a club to the user's bag club select is a dropdown of all clubs by clubname */}
-            <div className="flex flex-col items-center justify-center h-screen">
+            <div className="bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800 py-20">
+                <div className="flex flex-col items-center justify-center">
+                <Card className="px-10 border  border-none rounded-lg bg-opacity-10 shadow-lg hover:bg-opacity-20 hover:scale-110 duration-200 bg-slate-400">
                 <div className="flex flex-col items-center justify-center">
                     <h1 className="text-6xl font-bold">Add Club</h1>
                     <h2 className="text-2xl font-bold">Add a new club to your bag</h2>
                 </div>
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center my-10">
                     <form className="w-full max-w-sm">
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -121,6 +123,8 @@ export const AddMyClub = () => {
                             </Button>
                         </div>
                     </form>
+                </div>
+                </Card>
                 </div>
             </div>
 

@@ -48,10 +48,9 @@ export const ApplicationViews = ({ token, setToken }) => {
                 <Route path="/editNote/:noteId(\d+)" element={<AddNote />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/editProfile" element={<UpdateProfile />} />
-                <Route path="/addClub" element={<AddMyClub />} />
+                <Route path="/bag/:bagId/addClub" element={<AddMyClub />} />
                 <Route path="/editClub/:clubId(\d+)" element={<AddMyClub />} />
-                <Route path="/MyClubs" element={<MyClubs />} />
-                <Route path="/MyBag" element={<MyClubsList />} />
+                <Route path="/MyBag" element={<MyClubs />} />
 
             </Route>
         </Routes>

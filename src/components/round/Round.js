@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Label } from 'flowbite-react';
+import { Card, Label } from 'flowbite-react';
 import { TextInput } from 'flowbite-react';
 import { Button } from 'flowbite-react';
 import { Checkbox, Select } from 'flowbite-react';
@@ -82,9 +82,10 @@ export const Round = ({setHoles, setCurrentHole, setCurrentRound}) => {
 
     return <>
         <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800">
-            <div className="flex flex-col items-center justify-center md:scale-125">
+            <Card className='px-10 border py-10  border-none rounded-lg bg-opacity-10 shadow-lg hover:bg-opacity-20 hover:scale-150 duration-200 bg-slate-400 md:scale-125'>
+            <div className="flex flex-col items-center justify-center ">
                 <h1 className="text-6xl font-bold">Start Round</h1>
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4 mt-10">
                     <div>
                         <div className="mb-2 block">
                             <Label
@@ -136,6 +137,7 @@ export const Round = ({setHoles, setCurrentHole, setCurrentRound}) => {
                                 value="Full Round"
                             />
                             <Checkbox
+                                className="ml-3"
                                 id="isFullRound"
                                 placeholder="Full Round"
                                 required={true}
@@ -146,7 +148,7 @@ export const Round = ({setHoles, setCurrentHole, setCurrentRound}) => {
                             />
                         </div>
 
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-row gap-4 mt-5">
                             <Button className="button is-link" type="submit" onClick={handleRound}> 
                                 Begin Round
                             </Button>
@@ -154,6 +156,7 @@ export const Round = ({setHoles, setCurrentHole, setCurrentRound}) => {
                     </div>
                 </form>
             </div>
+            </Card>
         </div>
     </>
 

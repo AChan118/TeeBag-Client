@@ -31,6 +31,7 @@ export const RoundCard = ({ round }) => {
     }, [])
     
     useEffect(() => {
+        
         getHoles() 
     }, [])
     
@@ -49,7 +50,7 @@ export const RoundCard = ({ round }) => {
     
     //if (round.id === hole.round && round.golfer === currentUser.id)
     //{
-
+    if(currentUser.id === round.golfer)
     return (
             <div>
             <Card className="flex flex-col items-center justify-center space-x-4 m-8 ">

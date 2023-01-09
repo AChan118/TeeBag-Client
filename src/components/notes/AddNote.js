@@ -15,15 +15,15 @@ export const AddNote = () => {
         content: "",
         date: ""
     })
-    const [currentUser, setCurrentUser] = useState({id: 0})
-    
+    const [currentUser, setCurrentUser] = useState({ id: 0 })
+
     useEffect(() => {
         getCurrentUser().then((data) => {
             setCurrentUser(data.id)
         })
     }, [])
 
-    
+
 
     const handleControlledInputChange = (event) => {
         const newNote = { ...note }
@@ -43,15 +43,16 @@ export const AddNote = () => {
             .then(() => navigate("/notes"))
     }
 
-   
+
     return (
         <>
-            <div className="flex flex-col items-center justify-center h-screen">
-                <div className="flex flex-col items-center justify-center">
-                    <h1 className="text-6xl font-bold">Add Note</h1>
-                </div>
-                <div className="flex flex-col items-center justify-center">
-                    <Card>
+            <div className="bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800 py-20">
+
+                <div className="flex flex-col items-center justify-center my-10">
+                    <Card className="px-10 border  border-none rounded-lg bg-opacity-10 shadow-lg hover:bg-opacity-20 hover:scale-110 duration-200 bg-slate-400">
+                        <div className="flex flex-col items-center justify-center">
+                            <h1 className="text-6xl font-bold">Add Note</h1>
+                        </div>
                         <form className="flex flex-col gap-4">
                             <div>
                                 <div className="mb-2 block">
@@ -85,14 +86,14 @@ export const AddNote = () => {
                                     value={note.content}
                                 />
                             </div>
-                            <div>
+                            <div className="flex flex-col items-center justify-center">
                                 <Button
                                     onClick={handleClickSaveNote}
                                     value="addNote"
                                 >
                                     Submit Note
                                 </Button>
-                                
+
                             </div>
                         </form>
                     </Card>

@@ -52,3 +52,14 @@ export const createNote = (note) => {
     })
         .then(res => res.json())
 }
+
+export const getNotesByGolfer = (golferId) => {
+    return fetch(`http://localhost:8000/notes?golfer=${golferId}`, {
+        headers: {
+            "Accept": "application/json",
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+        .then(res => res.json())
+}
+

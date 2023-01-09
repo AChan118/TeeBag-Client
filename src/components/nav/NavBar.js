@@ -50,6 +50,9 @@ export const NavBar = ({ token, setToken }) => {
                             <Navbar.Link href="/rounds">
                                 My Rounds
                             </Navbar.Link>
+                            <Navbar.Link href="/notes">
+                                Notes
+                            </Navbar.Link>
                             <Navbar.Link href="/profile">
                                 Profile
                             </Navbar.Link>

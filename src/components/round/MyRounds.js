@@ -3,26 +3,38 @@
 import { Button, Card, Carousel, Tooltip } from "flowbite-react"
 import React, { useState, useEffect } from "react"
 
-import { getAllRounds } from "../../managers/RoundManager"
+import { getAllRounds, getRoundsByGolfer } from "../../managers/RoundManager"
+import { getCurrentUser } from "../../managers/UserManager"
 import { RoundCard } from "./RoundCard"
 import { RoundCarousel } from "./RoundCarousel"
 
 export const MyRounds = () => {
+    const [currentUser, setCurrentUser] = useState({ id: 0 })
     const [rounds, setRounds] = useState([])
     const [holes, setHoles] = useState([])
 
 
     const getRounds = () => {
-        getAllRounds().then(rounds => {
+        getRoundsByGolfer(currentUser.id).then(rounds => {
             setRounds(rounds)
         })
     }
 
+    const getUser = () => {
+        getCurrentUser().then((user) => {
+            setCurrentUser(user)
+        }
+        )
+    }
 
     useEffect(() => {
-        getRounds()
+        getUser()
 
     }, [])
+    useEffect(() => {
+        getRounds()
+    }, [currentUser])
+
 
     return (
         <>
@@ -30,15 +42,28 @@ export const MyRounds = () => {
 
 
                 <div className="h-full sm:h-55  " >
+                    {
+                        rounds.length !== 0 ?
+                            <Carousel className="absolute inset-x-0 bottom-0 mb-3">
 
-                    <Carousel className="absolute inset-x-0 bottom-0 mb-3">
+                                {rounds.map(round => <RoundCarousel key={round.id} round={round} />)}
+                            </Carousel>
+                            : null
+                            // <Carousel className="absolute inset-x-0 bottom-0 mb-3">
+                            //     <div className="flex flex-col h-full bg-gray-400 dark:bg-gray-700 dark:text-white items-center justify-center bg-opacity-20">
 
-                        {rounds.map(round => <RoundCarousel key={round.id} round={round} />)}
-                    </Carousel>
+                            //         <div className="mb-10">
+
+                            //             <h1 className="text-5xl text-center">Start A New Round To View Recent Rounds</h1>
+
+                            //         </div>
+                            //     </div>
+                            // </Carousel>
+                    }
                 </div>
-                <div className="rounds">
+                <div className="p-3">
                     <div className="max-w-sm">
-                        <Card className="m-3">
+                        <Card className="">
                             <h5 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 Stats and Analysis
                             </h5>
@@ -50,7 +75,7 @@ export const MyRounds = () => {
                         </Card>
                     </div>
 
-                    <div className="flex justify-center m-3">
+                    <div className="flex justify-start mt-6">
                         <Card className=" bg-gray-400 bg-opacity-10 border-none">
 
                             <Tooltip content="Open all rounds">
@@ -59,7 +84,7 @@ export const MyRounds = () => {
                                 </Button>
                             </Tooltip>
 
-                            <div className="hidden" >
+                            <div className="" >
                                 {rounds.map(round => <RoundCard key={round.id} round={round} />)}
                             </div>
 

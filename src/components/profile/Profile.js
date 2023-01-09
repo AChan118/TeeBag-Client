@@ -28,7 +28,7 @@ export const Profile = () => {
                     <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src={currentUser.profileImageUrl} alt="Avatar" />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{currentUser.firstName} {currentUser.lastName}</h5>
                     <span className="text-sm text-gray-800 dark:text-gray-400 ">@{currentUser.username}</span>
-                    <p className="mt-2 text-gray-800 dark:text-gray-300">Bio: {currentUser.bio}</p>
+                    <p className="mt-2 text-gray-800 dark:text-gray-300 text-center mr-3 ml-3">{currentUser.bio}</p>
                     <div className="flex mt-4 space-x-3 md:mt-6">
                         <Tooltip
                             content="Edit profile"

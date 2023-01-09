@@ -41,80 +41,59 @@ export const Register = ({ setToken }) => {
   }
 
   return (
-    <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleRegister}>
-        <h1 className="title">TeeBag</h1>
-        <p className="subtitle">Create an account</p>
-        <div className="field">
-          <label className="label">First Name</label>
-          <div className="control">
-            <input className="input" type="text" ref={firstName} />
+    <div className="py-40 bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800 ">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row w-10/12 lg:w-8/12 bg-white bg-opacity-30 rounded-xl mx-auto shadow-lg overflow-hidden">
+          {/* <-- Left Side --> */}
+          <div className="w-full md:w-1/2 flex flex-col items-center justify-center relative">
+            <img className="w-full h-full shadow-lg saturate-200  mix-blend-overlay " src="https://images.pexels.com/photos/6542389/pexels-photo-6542389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            <h1 className="text-6xl mb-3 text-green-600 font-bold absolute ">TeeBag</h1>
+          </div>
+          {/* <-- Right Side --> */}
+          <div className="w-full md:w-1/2 py-16 px-12">
+            <h1 className="text-4xl text-center">Sign Up For TeeBag</h1>
+            <h2 className="text-3xl my-4">Register</h2>
+            <form className="" onSubmit={handleRegister}>
+              {/* <-- Full Name --> */}
+              <div className="grid grid-cols-2 gap-5">
+                <input className="border border-gray-400 py-1 px-2" type="text" placeholder="Firstname" ref={firstName} />
+                <input className="border border-gray-400 py-1 px-2" type="text" placeholder="Lastname" ref={lastName} />
+              </div>
+              {/* <-- Username --> */}
+              <div className="mt-5">
+                <input className="border border-gray-400 py-1 px-2 w-full" type="text" placeholder="Username" ref={username} />
+              </div>
+              {/* <-- Email --> */}
+              <div className="mt-5">
+                <input className="border border-gray-400 py-1 px-2 w-full" type="text" placeholder="Email" ref={email} />
+              </div>
+              {/* <-- Passwords --> */}
+              <div className="mt-5">
+                <input className="border border-gray-400 py-1 px-2 w-full" type="password" placeholder="Password" ref={password} />
+              </div>
+              <div className="mt-5">
+                <input className="border border-gray-400 py-1 px-2 w-full" type="password" placeholder="Verify Password" ref={verifyPassword} />
+              </div>
+              {/* <-- Bio --> */}
+              <div className="mt-5">
+                <textarea className="border border-gray-400 py-1 px-2 w-full" placeholder="Tell us about yourself..." ref={bio}></textarea>
+              </div>
+              {/* <-- Buttons --> */}
+              <div className="field is-grouped">
+                <div className="mt-5">
+                  <button className="button is-link w-full bg-green-500 hover:bg-green-600 py-3 text-center text-white" type="submit" >
+                    Register Now</button>
+                </div>
+                <div className="mt-5">
+                  <button className="button is-link w-full bg-red-500 hover:bg-red-600 py-3 text-center text-white">
+                    <Link to="/login" className="">Back To Login</Link>
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-
-        <div className="field">
-          <label className="label">Last Name</label>
-          <div className="control">
-            <input className="input" type="text" ref={lastName} />
-          </div>
-        </div>
-
-        <div className="field">
-          <label className="label">Username</label>
-          <div className="control">
-            <input className="input" type="text" ref={username} />
-          </div>
-        </div>
-
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input className="input" type="email" ref={email} />
-          </div>
-        </div>
-
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="field-body">
-            <div className="field">
-              <p className="control is-expanded">
-                <input className="input" type="password" placeholder="Password" ref={password} />
-              </p>
-            </div>
-
-            <div className="field">
-              <p className="control is-expanded">
-                <input className="input" type="password" placeholder="Verify Password" ref={verifyPassword} />
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="field">
-          <label className="label">Bio</label>
-          <div className="control">
-            <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio}></textarea>
-          </div>
-        </div>
-
-        {/* <div className="field">
-          <label className="label">Profile Image</label>
-          <div className="control">
-            <textarea className="textarea" placeholder="Insert Picture URL" ref={profile_mage}></textarea>
-          </div>
-        </div> */}
-
-        <div className="field is-grouped">
-          <div className="control">
-            <button className="button is-link" type="submit" >
-              Submit</button>
-          </div>
-          <div className="control">
-            <Link to="/login" className="button is-link is-light">Cancel</Link>
-          </div>
-        </div>
-
-      </form>
-    </section>
+      </div>
+    </div>
   )
 }
