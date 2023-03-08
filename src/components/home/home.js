@@ -1,10 +1,11 @@
 //build homepage with a start round section and a scroll down to a carosel with3 cards export home page
-import { Button, Card, Carousel } from "flowbite-react"
-import React, { useEffect, useRef, useState } from "react"
+import { Carousel } from "flowbite-react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getAllRounds, getRoundsByGolfer } from "../../managers/RoundManager"
+import { getRoundsByGolfer } from "../../managers/RoundManager"
 import { getCurrentUser } from "../../managers/UserManager"
 import { RoundCarousel } from "../round/RoundCarousel"
+import { Weather } from "../Weather/Weather"
 
 export const Home = () => {
     const navigate = useNavigate()
@@ -26,6 +27,8 @@ export const Home = () => {
     useEffect(() => {
         getUser()
     }, [])
+
+    const recentRounds = rounds.slice(0, 5)
 
     useEffect(() => {
         getRounds()
@@ -62,11 +65,11 @@ export const Home = () => {
                         </button>
                     </div>
                 </div>
-                <div className="h-full xl:h-80 p-3  " >
+                <div className="flex flex-col gap-3 md:flex-row justify-center h-full xl:h-80 p-3  " >
                     {
                         rounds.length !== 0 ?
-                            <Carousel className="absolute inset-x-0 bottom-0 md:w-1/3">
-                                {rounds.map(round => <RoundCarousel key={round.id} round={round} />)}
+                            <Carousel className="absolute inset-x-0 bottom-0 md:w-1/2">
+                                {recentRounds.map(round => <RoundCarousel key={round.id} round={round} />)}
                             </Carousel>
                             : <Carousel className="absolute inset-x-0 bottom-0 md:w-1/3">
                                 <div className="flex flex-col h-full bg-gray-400 dark:bg-gray-700 dark:text-white items-center justify-center bg-opacity-20">
@@ -76,7 +79,11 @@ export const Home = () => {
                                 </div>
                             </Carousel>
                     }
+                    {/* <div className=" w-full md:w-1/2">
+                        <Weather/>
+                    </div> */}
                 </div>
+
             </div>
         </>
     )

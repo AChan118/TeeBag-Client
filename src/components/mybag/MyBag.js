@@ -1,18 +1,15 @@
 // build a club management page with a form to add a new club from a list of clubs
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Button, Card, Tooltip } from "flowbite-react"
-import { addMyClub } from "../../managers/ClubManager"
+import { Card, Tooltip } from "flowbite-react"
 import { MyClubsList } from "./MyClubList"
 import { getBagByGolfer } from "../../managers/BagManager"
-import { getCurrentUser } from "../../managers/UserManager"
+
 
 export const MyClubs = () => {
     const navigate = useNavigate()
     const [myBag, setMyBag] = useState([])
     const [myClubs, setMyClubs] = useState([])
-
-
 
     const getMyBag = () => {
         getBagByGolfer().then(data => {
@@ -21,7 +18,6 @@ export const MyClubs = () => {
         })
     }
 
-
     useEffect(() => {
         getMyBag()
     }, [])
@@ -29,18 +25,18 @@ export const MyClubs = () => {
     const addMyClub = () => {
         navigate(`/bag/${myBag.id}/addClub`)
     }
+
     return (
         <>
             <div className="bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800 ">
                 {/* Header */}
-                <div className="flex flex-col items-center justify-center p-20">
+                <div className="flex flex-col items-center justify-center p-10 ">
                     <h1 className="text-6xl font-bold">MyBag</h1>
-                    <h2 className="text-2xl font-bold">Current clubs in your personalized bag</h2>
+                    <h2 className="text-2xl font-bold text-center">Current clubs in your personalized bag</h2>
                 </div>
                 {/* Body */}
                 <div>
                     <div className="flex items-center justify-center ">
-
                     </div>
                     {/* Add Club Card */}
                     <div className="flex items-center justify-center ">
@@ -57,10 +53,9 @@ export const MyClubs = () => {
                     </div>
                     {/* My Club Cards */}
                     <div>
-                        <MyClubsList myClubs={myClubs} />
+                        <MyClubsList myClubs={myClubs} getMyBag={getMyBag}/>
                     </div>
                 </div>
-
             </div>
         </>
     )

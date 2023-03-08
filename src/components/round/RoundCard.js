@@ -1,18 +1,10 @@
-// create a round card component that shows the holes grouped by round id date and course name for each round and has the 
-
 import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { Card } from "flowbite-react"
-import { getAllRounds } from "../../managers/RoundManager"
+import { Button, Card } from "flowbite-react"
 import { getCurrentUser } from "../../managers/UserManager"
 import { getHoleByRound } from "../../managers/HoleManager"
+import { deleteRound } from "../../managers/RoundManager"
 
-
-
-
-export const RoundCard = ({ round }) => {
-    const navigate = useNavigate()
-  
+export const RoundCard = ({ round , id , getRounds}) => {
     const [currentUser, setCurrentUser] = useState({})
     const [holes, setHoles] = useState([])
     const [score, setScore] = useState("")
@@ -20,7 +12,7 @@ export const RoundCard = ({ round }) => {
     const getHoles = () => {
         getHoleByRound(round.id).then(holes => {
             setHoles(holes)
-            
+
         })
     }
 
@@ -29,12 +21,12 @@ export const RoundCard = ({ round }) => {
             setCurrentUser(user)
         })
     }, [])
-    
+
     useEffect(() => {
-        
-        getHoles() 
+
+        getHoles()
     }, [])
-    
+
 
     useEffect(() => {
         let totalScore = 0
@@ -43,25 +35,23 @@ export const RoundCard = ({ round }) => {
         })
         setScore(totalScore)
     }
-    , [holes])
+        , [holes])
 
-
-    //if the round id is the same as the hole round id amd the round golfer id is the same as the current user id then return the round id, course name, total par, and total score
-    
-    //if (round.id === hole.round && round.golfer === currentUser.id)
-    //{
-    if(currentUser.id === round.golfer)
-    return (
-            <div>
-            <Card className="flex flex-col items-center justify-center space-x-4 m-8 ">
-                   
-                        <h1 className="text-6xl">{round.course.name}</h1>
-                        <h1 className="text-6xl">Par: {round.course.total_par}</h1>
-                        <h1 className="text-6xl">Score: {score}</h1>
-            
+    if (currentUser.id === round.golfer)
+        return (
+            <Card className="flex md:w-1/3 flex-col w-full items-center justify-center space-x-4 md:m-8 my-4 bg-gray-400 bg-opacity-20 border-none">
+                <div>
+                <h1 className="text-6xl">{round.course.name}</h1>
+                <h1 className="text-4xl mt-3">Par: {round.course.total_par}</h1>
+                <h1 className="text-4xl">Score: {score}</h1>
+                <p className="mt-3 text-gray-800 dark:text-gray-300 text-center mr-3 ml-3">Date Played: {round.date}</p>
+                <Button onClick={() => {
+                        deleteRound(id).then(getRounds)
+                    }} className= " hover:bg-red-400 text-white font-bold py-2 px-4 rounded w-full mt-3">
+                        Delete
+                    </Button>
+                </div>     
             </Card>
-            </div>
-    )
-    //}
+        )
 }
 

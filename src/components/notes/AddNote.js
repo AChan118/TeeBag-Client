@@ -1,8 +1,6 @@
-//Form for logged in user to add a new note to their list of notes using state
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "flowbite-react"
-// import { addNote } from "../../managers/NoteManager"
 import { Label, TextInput, Card } from "flowbite-react"
 import { getCurrentUser } from '../../managers/UserManager';
 import { createNote } from "../../managers/NoteManager";
@@ -23,8 +21,6 @@ export const AddNote = () => {
         })
     }, [])
 
-
-
     const handleControlledInputChange = (event) => {
         const newNote = { ...note }
         let selectedVal = event.target.value
@@ -43,11 +39,9 @@ export const AddNote = () => {
             .then(() => navigate("/notes"))
     }
 
-
     return (
         <>
             <div className="bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800 py-20">
-
                 <div className="flex flex-col items-center justify-center my-10">
                     <Card className="px-10 border  border-none rounded-lg bg-opacity-10 shadow-lg hover:bg-opacity-20 hover:scale-110 duration-200 bg-slate-400">
                         <div className="flex flex-col items-center justify-center">
@@ -93,7 +87,6 @@ export const AddNote = () => {
                                 >
                                     Submit Note
                                 </Button>
-
                             </div>
                         </form>
                     </Card>

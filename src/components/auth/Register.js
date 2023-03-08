@@ -47,7 +47,7 @@ export const Register = ({ setToken }) => {
           {/* <-- Left Side --> */}
           <div className="w-full md:w-1/2 flex flex-col items-center justify-center relative">
             <img className="w-full h-full shadow-lg saturate-200  mix-blend-overlay " src="https://images.pexels.com/photos/6542389/pexels-photo-6542389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-            <h1 className="text-6xl mb-3 text-green-600 font-bold absolute ">TeeBag</h1>
+            <h1 className="text-6xl mb-3 text-green-600 font-bold absolute "></h1>
           </div>
           {/* <-- Right Side --> */}
           <div className="w-full md:w-1/2 py-16 px-12">

@@ -1,13 +1,8 @@
-//Build a profile component that will display the user's name, picture, and bio
-
 import { Tooltip } from "flowbite-react"
 import { useEffect, useState } from "react"
 import { getCurrentUser } from "../../managers/UserManager"
 
-
-
 export const Profile = () => {
-
     const [currentUser, setCurrentUser] = useState({})
 
     useEffect(() => {
@@ -17,13 +12,9 @@ export const Profile = () => {
     }, [])
 
     return <>
-
-        <div className="flex flex-col items-center justify-center  bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800">
-            {/* <img src= "https://w0.peakpx.com/wallpaper/550/425/HD-wallpaper-skyscrapers-metropolis-modern-architecture-buildings-city.jpg" 
-        className="w-full h-full object-cover  "/> */}
-
+        <div className="flex flex-col items-center md:justify-center  bg-cover bg-center relative w-full min-h-screen bg-gradient-to-tl from-green-800 to-blue-800">
+            {/* <-- Profile Card --> */}
             <div className="w-full pt-10 max-w-sm border border-gray-200 rounded-lg shadow-lg border-none bg-white bg-opacity-10  md:scale-150 ">
-
                 <div className="flex flex-col items-center pb-10 ">
                     <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src={currentUser.profileImageUrl} alt="Avatar" />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{currentUser.firstName} {currentUser.lastName}</h5>
@@ -43,7 +34,6 @@ export const Profile = () => {
                 </div>
             </div>
         </div>
-
     </>
 }
 
