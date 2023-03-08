@@ -1,5 +1,5 @@
 export const getBagById = (bagId) => {
-    return fetch(`http://localhost:8000/mybags/${bagId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/mybags/${bagId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -8,7 +8,7 @@ export const getBagById = (bagId) => {
         .then(res => res.json())
 }
 export const deleteBag = (bagId) => {
-    return fetch(`http://localhost:8000/mybags/${bagId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/mybags/${bagId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export const deleteBag = (bagId) => {
         .then(res => res.json())
 }
 export const updateBag = (bag) => {
-    return fetch(`http://localhost:8000/mybags/${bag.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/mybags/${bag.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export const updateBag = (bag) => {
         .then(res => res.json())
 }
 export const createBag = (bag) => {
-    return fetch("http://localhost:8000/mybags", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/mybags", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export const createBag = (bag) => {
 }
 
 export const getBagByGolfer = () => {
-    return fetch(`http://localhost:8000/mybags/current_bag`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/mybags/current_bag`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`

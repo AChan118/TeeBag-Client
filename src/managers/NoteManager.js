@@ -1,5 +1,5 @@
 export const getAllNotes = () => {
-    return fetch("http://localhost:8000/notes", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/notes", {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -9,7 +9,7 @@ export const getAllNotes = () => {
 }
 
 export const getNoteById = (noteId) => {
-    return fetch(`http://localhost:8000/notes/${noteId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/notes/${noteId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -19,7 +19,7 @@ export const getNoteById = (noteId) => {
 }
 
 export const deleteNote = (noteId) => {
-    return fetch(`http://localhost:8000/notes/${noteId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/notes/${noteId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const deleteNote = (noteId) => {
 }
 
 export const updateNote = (note) => {
-    return fetch(`http://localhost:8000/notes/${note.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/notes/${note.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export const updateNote = (note) => {
 }
 
 export const createNote = (note) => {
-    return fetch("http://localhost:8000/notes", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/notes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const createNote = (note) => {
 }
 
 export const getNotesByGolfer = (golferId) => {
-    return fetch(`http://localhost:8000/notes?golfer=${golferId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/notes?golfer=${golferId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`

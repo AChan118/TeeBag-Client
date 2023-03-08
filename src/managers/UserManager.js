@@ -1,5 +1,5 @@
 export const getAllUsers = () => {
-    return fetch("http://localhost:8000/golfers",{
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/golfers",{
         headers: {
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
     }
@@ -7,7 +7,7 @@ export const getAllUsers = () => {
         .then(res => res.json())
 }
 export const updateUser = (user) => {
-    return fetch(`http://localhost:8000/golfers/${user.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/golfers/${user.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export const updateUser = (user) => {
     })
 }
 export const getCurrentUser = () => {
-    return fetch("http://localhost:8000/golfers/current", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/golfers/current", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

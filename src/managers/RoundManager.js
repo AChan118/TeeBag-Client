@@ -1,5 +1,5 @@
 export const getRoundById = (roundId) => {
-    return fetch(`http://localhost:8000/rounds/${roundId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/rounds/${roundId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -9,7 +9,7 @@ export const getRoundById = (roundId) => {
 }
 
 export const deleteRound = (roundId) => {
-    return fetch(`http://localhost:8000/rounds/${roundId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/rounds/${roundId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const deleteRound = (roundId) => {
         .then(res => res.json())
 }
 export const updateRound = (round) => {
-    return fetch(`http://localhost:8000/rounds/${round.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/rounds/${round.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export const updateRound = (round) => {
     })
 }
 export const getAllRounds = () => {
-    return fetch("http://localhost:8000/rounds", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/rounds", {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -38,7 +38,7 @@ export const getAllRounds = () => {
         .then(res => res.json())
 }
 export const createRound = (round) => {
-    return fetch("http://localhost:8000/rounds", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/rounds", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const createRound = (round) => {
         .then(res => res.json())
 }
 export const getRoundsByGolfer = (golferId) => {
-    return fetch(`http://localhost:8000/rounds?golfer=${golferId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/rounds?golfer=${golferId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`

@@ -1,5 +1,5 @@
 export const getAllHoles = () => {
-    return fetch(`http://localhost:8000/holes`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/holes`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -9,7 +9,7 @@ export const getAllHoles = () => {
 }
 
 export const getHoleById = (holeId) => {
-    return fetch(`http://localhost:8000/holes/${holeId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/holes/${holeId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -19,7 +19,7 @@ export const getHoleById = (holeId) => {
 }
 
 export const updateHole = (hole) => {
-    return fetch(`http://localhost:8000/holes/${hole.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/holes/${hole.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const updateHole = (hole) => {
 }
 
 export const createHole = (hole) => {
-    return fetch("http://localhost:8000/holes", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/holes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export const createHole = (hole) => {
 }
 
 export const getHoleByRound = (roundId) => {
-    return fetch(`http://localhost:8000/holes?round=${roundId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/holes?round=${roundId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`

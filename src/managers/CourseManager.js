@@ -1,5 +1,5 @@
 export const getAllCourses = () => {
-    return fetch("http://localhost:8000/courses", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/courses", {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -8,7 +8,7 @@ export const getAllCourses = () => {
         .then(res => res.json())
 }
 export const getCourseById = (courseId) => {
-    return fetch(`http://localhost:8000/courses/${courseId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/courses/${courseId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -18,7 +18,7 @@ export const getCourseById = (courseId) => {
 }
 
 export const deleteCourse = (courseId) => {
-    return fetch(`http://localhost:8000/courses/${courseId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/courses/${courseId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export const deleteCourse = (courseId) => {
         .then(res => res.json())
 }
 export const updateCourse = (course) => {
-    return fetch(`http://localhost:8000/courses/${course.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/courses/${course.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export const updateCourse = (course) => {
         .then(res => res.json())
 }
 export const createCourse = (course) => {
-    return fetch("http://localhost:8000/courses", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/courses", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

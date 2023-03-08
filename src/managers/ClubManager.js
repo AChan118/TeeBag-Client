@@ -1,5 +1,5 @@
 export const createMyClub = (myClub) => {
-    return fetch("http://localhost:8000/myclubs", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/myclubs", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -11,7 +11,7 @@ export const createMyClub = (myClub) => {
 }
 
 export const getAllMyClubs = () => {
-    return fetch("http://localhost:8000/myclubs", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/myclubs", {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -20,7 +20,7 @@ export const getAllMyClubs = () => {
         .then(res => res.json())
 }
 export const getMyClubById = (myClub) => {
-    return fetch(`http://localhost:8000/myclubs/${myClub.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/myclubs/${myClub.id}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -30,7 +30,7 @@ export const getMyClubById = (myClub) => {
 }
 
 export const deleteMyClub = (myClubId) => {
-    return fetch(`http://localhost:8000/myclubs/${myClubId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/myclubs/${myClubId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const deleteMyClub = (myClubId) => {
         .then(res => res.json())
 }
 export const updateMyClub = (myClub) => {
-    return fetch(`http://localhost:8000/myclubs/${myClub.id}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/myclubs/${myClub.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const updateMyClub = (myClub) => {
     })
 }
 export const getAllClubs = () => {
-    return fetch("http://localhost:8000/clubs", {
+    return fetch("https://lobster-app-pl7fb.ondigitalocean.app/clubs", {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
@@ -59,7 +59,7 @@ export const getAllClubs = () => {
         .then(res => res.json())
 }
 export const getClubById = (clubId) => {
-    return fetch(`http://localhost:8000/clubs/${clubId}`, {
+    return fetch(`https://lobster-app-pl7fb.ondigitalocean.app/clubs/${clubId}`, {
         headers: {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
